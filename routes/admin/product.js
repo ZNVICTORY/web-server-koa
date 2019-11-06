@@ -66,12 +66,17 @@ router.get('/category' , async (ctx) => {
 
 router.post('/updatecate', async (ctx) => {
   const {id, info} = ctx.request.body
-  // console.log(id, info)
   catelist.map(v => {
     if(v.id === id) {
       v.info = info
     }
   })
   ctx.body = { code: 0, success: true, msg: '修改成功', data:[]}
+})
+
+router.post('/catesort', async(ctx) => {
+  const { sort } = ctx.request.body
+  console.log(sort)
+  ctx.body = { code: 0, success: true, msg : '', data:[]}
 })
 module.exports = router
